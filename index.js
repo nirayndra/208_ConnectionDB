@@ -14,13 +14,13 @@ app.use(
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'mahasiswa',
+    database: 'Mahasiswa',
     password: 'j4sminejk',
     port: 5432
 });
 
 app.get('/', (req, res, next) => {
-    console.log9("TEST DATA: ");
+    console.log("TEST DATA: ");
     pool.query('Select * from biodata')
     .then(testData => {
         console.log(testData.rows);
@@ -30,4 +30,8 @@ app.get('/', (req, res, next) => {
         console.error(err);
         res.status(500).send('Internet Server Error');
     });
+})
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
 })
